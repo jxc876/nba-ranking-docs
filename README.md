@@ -30,11 +30,13 @@ Ask a fan for their top ten list and familiar questions quickly appear:
 
 Most published rankings ultimately reflect the author's hidden preferences. 
 
-Some systems, such as John Hollinger's GOAT Points, make those preferences more explicit by assigning points to career achievements, but the reader still has to accept the author's formula.
+Some systems, such as John Hollinger's "GOAT Points", try to answer the question using a formula. 
+
+However, it still requires that you agree with what the formula deems to be important.
 
 This app makes the formula interactive. It helps a user answer:
 
-*Given the accomplishments I value, how would NBA players rank?* 
+*Given the accomplishments that I value, how would NBA players rank?* 
 
 ## Goals
 
