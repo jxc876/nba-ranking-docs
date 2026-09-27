@@ -41,6 +41,9 @@
                                 <a href="Architecture/" class="nav-link">Architecture</a>
                             </li>
                             <li class="nav-item">
+                                <a href="Milestones/" class="nav-link">Milestones</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="Screens/" class="nav-link">Screens</a>
                             </li>
                             <li class="nav-item">
@@ -133,20 +136,8 @@
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="1"><a href="#project-milestones" class="nav-link">Project Milestones</a>
+            <li class="nav-item" data-bs-level="1"><a href="#milestones" class="nav-link">Milestones</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#milestone-1-fixed-ranking" class="nav-link">Milestone 1) Fixed Ranking</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#milestone-2-custom-weights" class="nav-link">Milestone 2) Custom Weights</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#milestone-3-save-share" class="nav-link">Milestone 3) Save &amp; Share</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
             
@@ -262,53 +253,8 @@
 </ul>
 <h1 id="architecture">Architecture</h1>
 <p>See <a href="Architecture/">Architecture</a> for details on the data model and ingestion process.</p>
-<h1 id="project-milestones">Project Milestones</h1>
-<h2 id="milestone-1-fixed-ranking">Milestone 1) Fixed Ranking</h2>
-<p>Goal: Validate the presentation &amp; explainability of a weighted ranking</p>
-<ul>
-<li>Use predetermined fixed weights </li>
-<li>Use a curated dataset of  ~30 notable players</li>
-<li>Show the ranked list on page load</li>
-<li>Show an individual player's score breakdown</li>
-</ul>
-<p>Technical Notes</p>
-<ul>
-<li>Can be a React application or server side web app</li>
-<li>The data can come from a hardcoded <code>data.json</code> file</li>
-<li>No database, accounts, ingestion automation, or durable sharing</li>
-</ul>
-<p>Success</p>
-<ul>
-<li>A reviewer can understand the formula and explain why one player ranks above another. </li>
-<li>Validate the sample data and default weights have no obvious errors </li>
-</ul>
-<h2 id="milestone-2-custom-weights">Milestone 2) Custom Weights</h2>
-<p>Goal: Validate the interaction of creating a personal formula.</p>
-<ul>
-<li>Show the current weight for every supported accomplishment</li>
-<li>Allow weights to be increased, decreased, or set to zero</li>
-<li>Recalculate and reorder the ranking after changes are applied</li>
-<li>Keep the curated local dataset and client-only architecture</li>
-</ul>
-<p>Success </p>
-<ul>
-<li>A user can change the formula</li>
-<li>See a predictable change in the rankings</li>
-<li>Understand why the result changed</li>
-</ul>
-<h2 id="milestone-3-save-share">Milestone 3) Save &amp; Share</h2>
-<p>Goal: Allow Saving &amp; Sharing Ranking</p>
-<ul>
-<li>Store players, accomplishments, dataset versions, and saved rankings</li>
-<li>Save configuration (weights, results) &amp; metadata (title, description), immutable?</li>
-<li>View and share using URLs, ex: <code>site.com/ranking/&lt;UUID&gt;</code></li>
-<li>Ability to fork a shared URL</li>
-</ul>
-<p>Technical Notes</p>
-<ul>
-<li>Ingest and validate a broader modern-era dataset</li>
-<li>Player images can be packaged and hosted with the web app. </li>
-</ul>
+<h1 id="milestones">Milestones</h1>
+<p>See <a href="Milestones/">Milestones</a> for details on delivery.</p>
 <h1 id="screens">Screens</h1>
 <p>See <a href="Screens/">Screens</a> for UI / UX details.</p>
 <h1 id="appendix">Appendix</h1>
@@ -373,5 +319,5 @@
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-09-27 01:17:03.771488+00:00
+Build Date UTC : 2026-09-27 01:19:53.928156+00:00
 -->
