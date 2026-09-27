@@ -3,7 +3,7 @@ For code see: [nba-ranking-app](https://github.com/jxc876/nba-ranking-app/tree/m
 # Overview
 
 - Status: Draft
-- Created: September 2026
+- Date: September 2026
 - Purpose: High-level vision and architecture design
 
 ## Objective
@@ -28,11 +28,11 @@ Most published rankings ultimately reflect the author's hidden preferences.
 
 Some systems, such as John Hollinger's "GOAT Points", try to answer the question using a formula. 
 
-However, it still requires that you agree with what the formula deems to be important.
+However, it requires that you agree with what the formula prioritizes.
 
-This app makes the formula interactive. It helps a user answer:
+This app makes the formula interactive, It helps a user answer:
 
-*Given the accomplishments that I value, how would NBA players rank?* 
+"Given the accomplishments that I value most, how would NBA players rank?"* 
 
 ## Project Goals
 
