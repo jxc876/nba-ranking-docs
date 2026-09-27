@@ -1,10 +1,68 @@
 # Architecture
 
-## Data Model
-
 Let's use a relation database — ex: Postgres
 
 - https://www.postgresql.org
+
+## Tables
+
+### Player Table
+
+`players` — contains player information (id, name, etc)
+
+```
+players
+-------
+id
+name
+external_id
+```
+
+### Accomplishment Table
+
+`accomplishment_types` — contains the different accomplishments (ex: MVP)
+
+```
+accomplishment_types
+-------
+id 
+code
+name
+description
+```
+
+### Join Table
+
+`player_accomplishments` — is a joining table, it joins players and accomplishments
+
+```
+player_accomplishments
+-------
+id 
+player_id 
+accomplishment_type_id 
+season 
+team
+```
+
+### Ranking Table
+
+A persisted ranking is conceptually a snapshot containing:
+
+- The important part is that a shared ranking retains the formula and dataset version used
+
+```
+ranking
+-------
+id
+title
+description
+weights
+dataset_version
+created_at
+```
+
+### Avoid
 
 Players and accomplishment types should be modeled separately
 
@@ -21,59 +79,6 @@ mvps ❌
 finals_mvps ❌
 all_nba_first ❌
 ...
-```
-
-## Tables
-
-`players` — contains player information (id, name, etc)
-
-```
-players
--------
-id
-name
-external_id
-```
-
-
-`accomplishment_types` — contains the different accomplishments (ex: MVP)
-
-```
-accomplishment_types
--------
-id 
-code
-name
-description
-```
-
-
-`player_accomplishments` — is a joining table
-
-```
-player_accomplishments
--------
-id 
-player_id 
-accomplishment_type_id 
-season 
-team
-```
-
-
-A persisted ranking is conceptually a snapshot containing:
-
-- The important part is that a shared ranking retains the formula and dataset version used
-
-```
-ranking
--------
-id
-title
-description
-weights
-dataset_version
-created_at
 ```
 
 ## Sample Data
@@ -95,6 +100,8 @@ Initial accomplishment data:
 | `roy`               | Rookie of the Year           |
 |                     |                              |
 
+&nbsp;
+
 Example for Jordan:
 
 | player_id | accomplishment_type_id | season |
@@ -103,6 +110,8 @@ Example for Jordan:
 | 23        | 1 (championship)       | 1991   |
 | 23        | 3 (finals_mvp)         | 1991   |
 | 23        | 2 (mvp)                | 1992   |
+
+&nbsp;
 
 ## Data Ingestion
 
@@ -131,7 +140,7 @@ The ingestion process should:
 
 Automated ingestion is useful, but a small curated dataset is acceptable for the first prototype.
 
-## NBA API
+### NBA API
 
 The official NBA API available at `stats.nba.com`
 
@@ -152,7 +161,7 @@ The official NBA API available at `stats.nba.com`
 - https://nba-apidocumentation.knowledgeowl.com
 - https://nba-apidocumentation.knowledgeowl.com/help/playerawards
 
-## Basketball Reference
+### Basketball Reference
 
 The following URLs from Basketball Reference contain data that can be parsed if necessary.
 
