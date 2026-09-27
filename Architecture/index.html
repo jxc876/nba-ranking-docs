@@ -38,32 +38,24 @@
                                 <a href=".." class="nav-link">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../Appendix/" class="nav-link">Appendix</a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="./" class="nav-link active" aria-current="page">Architecture</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../Instructions/" class="nav-link">Docs</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../Screens/" class="nav-link">Screens</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="../Appendix/" class="nav-link">Appendix</a>
+                            </li>
                         </ul>
 
                     <ul class="nav navbar-nav ms-md-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../Appendix/" class="nav-link">
+                                <a rel="prev" href=".." class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../Instructions/" class="nav-link">
+                                <a rel="next" href="../Screens/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -124,7 +116,7 @@
 
 <h1 id="architecture">Architecture</h1>
 <h2 id="data-model">Data Model</h2>
-<p>We can use a relation database — ex: Postgres</p>
+<p>Let's use a relation database — ex: Postgres</p>
 <ul>
 <li>https://www.postgresql.org</li>
 </ul>
@@ -303,7 +295,7 @@ created_at
 <li>https://www.nba.com/stats/player/203999/career — HTML page for Jokic</li>
 <li>https://stats.nba.com/stats/playerawards?PlayerID=203999 — Call for Jokic, times out</li>
 </ul>
-<p><img src="_img/nba-awards-screenshot.png" alt="nba-awards-screenshot" width="900"></p>
+<p><img src="../_img/nba-awards-screenshot.png" alt="nba-awards-screenshot" width="900"></p>
 <p><code>nba_api</code> — A Python client for accessing NBA.com</p>
 <ul>
 <li>https://github.com/swar/nba_api</li>
@@ -431,29 +423,8 @@ created_at
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../js/base.js"></script>
-        <script src="../search/main.js"></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
-                <form>
-                    <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

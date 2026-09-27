@@ -38,32 +38,24 @@
                                 <a href="." class="nav-link active" aria-current="page">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a href="Appendix/" class="nav-link">Appendix</a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="Architecture/" class="nav-link">Architecture</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="Instructions/" class="nav-link">Docs</a>
                             </li>
                             <li class="nav-item">
                                 <a href="Screens/" class="nav-link">Screens</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="Appendix/" class="nav-link">Appendix</a>
+                            </li>
                         </ul>
 
                     <ul class="nav navbar-nav ms-md-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
                             <li class="nav-item">
                                 <a rel="prev" class="nav-link disabled">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="Appendix/" class="nav-link">
+                                <a rel="next" href="Architecture/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -117,10 +109,6 @@
               </ul>
             </li>
             <li class="nav-item" data-bs-level="2"><a href="#ranking-model" class="nav-link">Ranking Model</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#questions" class="nav-link">Questions</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -251,16 +239,6 @@
 <p>The UI should show both the total score and its breakdown so that viewers can understand the result. A weight of zero means an accomplishment does not affect that ranking.</p>
 <p>Players with the same score share the same rank. They are displayed alphabetically within the tie.</p>
 <p>Some accomplishments overlap by design. A DPOY winner will often also receive an All-Defensive selection, just as an MVP winner will often receive an All-NBA selection. The model treats these as separate accomplishments because they represent different honors, but the default weights should account for the overlap so that related achievements are not unintentionally overemphasized.</p>
-<h2 id="questions">Questions</h2>
-<ul>
-<li>What are good default weights for the different achievements?</li>
-<li>How do we handle awards that did not exist in previous eras?</li>
-<li>Do eligible player’s pre-1980 accomplishments count (ex: Kareem’s earlier awards)</li>
-<li>How can values with different scales be normalized </li>
-<li>How do we keep the formulas fun without making it hard to understand them</li>
-<li>How do we handle ongoing data ingestions, and how often?</li>
-<li>How do we handle data corrections, are old rankings immutable?</li>
-</ul>
 <h1 id="scenarios">Scenarios</h1>
 <p>There are two main scenarios that users of the app can take.</p>
 <h2 id="1-view-a-ranking">1. View a Ranking</h2>
@@ -348,29 +326,8 @@
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="js/base.js"></script>
-        <script src="search/main.js"></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
-                <form>
-                    <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -416,5 +373,5 @@
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-09-27 01:07:07.082239+00:00
+Build Date UTC : 2026-09-27 01:17:03.771488+00:00
 -->
