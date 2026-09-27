@@ -1,10 +1,34 @@
 # Scope
 
+There are two main scenarios that users of the app can take.
+
+## View a Ranking
+
+Someone has shared a link with me, I can:
+
+- See the ranking's title, description, and ordered player list
+- See the formula and weights used to produce it
+- Inspect a player's score breakdown
+- See which dataset version the ranking used
+- Start a new ranking by copying the shared formula
+- No account is required to view a public ranking
+
+## Create a Ranking
+
+I can create a new ranking
+
+- I can start with the default formula or copy an existing ranking
+- Change the weight assigned to each supported accomplishment
+- Apply the changes and see the ranking recalculate immediately
+- Add a title and optional description
+- Save the ranking and receive a shareable link
+
+
 ## Player Pool
 
-The app focuses on the modern NBA era, beginning with the 1979–80 season.
+Let's focus on the modern NBA era, beginning with the 1979–80 season.
 
-This boundary roughly aligns with the introduction of the three-point line and the start of the Magic Johnson/Larry Bird era.
+This roughly aligns with the introduction of the three-point line and the Magic Johnson/Larry Bird era.
 
 This limits the scope of the app and makes getting the data easier
 
