@@ -2,8 +2,6 @@ For code see: [nba-ranking-app](https://github.com/jxc876/nba-ranking-app/tree/m
 
 # Overview
 
-## Metadata
-
 - Status: Draft
 - Created: September 2026
 - Purpose: High-level vision and architecture design
@@ -45,15 +43,15 @@ This app makes the formula interactive. It helps a user answer:
 - The initial scope is small enough to implement as a learning project
 - The results are intended to be a fun conversation starter
 
-# Scope
+## Scope
 
 See [Scope](Scope.md) for details on the scope of the project.
 
-# Scenarios
+## Scenarios
 
 There are two main scenarios that users of the app can take.
 
-## 1. View a Ranking
+### View a Ranking
 
  Someone has shared a link with me, I can:
 
@@ -64,7 +62,7 @@ There are two main scenarios that users of the app can take.
 - Start a new ranking by copying the shared formula
 - No account is required to view a public ranking
 
-## 2. Create a Ranking
+### Create a Ranking
 
 I can create a new ranking
 
@@ -74,18 +72,18 @@ I can create a new ranking
 - Add a title and optional description
 - Save the ranking and receive a shareable link
 
-# Architecture
+## Architecture
 
 See [Architecture](Architecture.md) for details on the data model and ingestion process.
 
-# Milestones
+## Milestones
 
 See [Milestones](./Milestones.md) for details on delivery.
 
-# Screens
+## Screens
 
 See [Screens](./Screens.md) for UI / UX details.
 
-# Appendix
+## Appendix
 
 See [Appendix](./Appendix.md) for additional details.

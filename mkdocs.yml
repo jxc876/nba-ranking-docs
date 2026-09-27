@@ -2,6 +2,10 @@ site_name: NBA Ranking App
 docs_dir: .
 site_dir: site
 
+theme:
+  name: mkdocs
+  navigation_depth: 3
+
 # Control which Markdown files appear in the site navigation.
 # Does not prevent other Markdown files from being built.
 nav:
@@ -24,3 +28,7 @@ nav:
 plugins:
 #  - search
   - same-dir
+
+markdown_extensions:
+  - toc:
+      toc_depth: 2-3
