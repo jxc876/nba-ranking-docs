@@ -12,7 +12,7 @@ For code see: [nba-ranking-app](https://github.com/jxc876/nba-ranking-app/tree/m
 
 Let's build a web application that lets basketball fans create and share rankings of the greatest NBA players.
 
-User can decide how much certain accomplishments matter and generate their own rankings. 
+Users can decide how much certain accomplishments matter, then generate their own rankings. 
 
 <img src="_img/milestone-2-desktop.png" alt="milestone-2-desktop" width="800">
 
