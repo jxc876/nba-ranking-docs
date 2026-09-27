@@ -8,6 +8,9 @@ The main page contains:
 - A selected player's score breakdown
 - A footer with methodology and source links
 
+<img src="../_img/milestone-2-desktop.png" alt="milestone-2-desktop" width="800">
+
+
 We likely need the following UI components
 
 - Navigation
