@@ -29,6 +29,17 @@ Let's avoid using NBA in the name, some ideas:
 - `rankthegreats.com`
 - `buildyourgoat.com`
 
+##  Open Questions
+
+- What are good default weights for the different achievements?
+- How do we handle awards that did not exist in previous eras?
+- Do eligible player’s pre-1980 accomplishments count (ex: Kareem’s earlier awards)
+- How can values with different scales be normalized
+- How do we keep the formulas fun without making it hard to understand them
+- How do we handle ongoing data ingestions, and how often?
+- How do we handle data corrections, are old rankings immutable?
+
+
 ## Docs
 
 How to Write an Effective Software Design Document

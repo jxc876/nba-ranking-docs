@@ -1,6 +1,22 @@
 site_name: NBA Ranking App
 docs_dir: .
 site_dir: site
+
+# Control which Markdown files appear in the site navigation.
+# Does not prevent other Markdown files from being built.
+nav:
+  - Home: README.md
+  - Architecture: Architecture.md
+  - Screens: Screens.md
+  - Appendix: Appendix.md
+
+# Uncomment exclude_docs to build only the files listed above.
+# The first pattern excludes everything, and the ! patterns allow selected files.
+# exclude_docs: |
+#   *
+#   !README.md
+#   !Architecture.md
+
 plugins:
-  - search
+#  - search
   - same-dir

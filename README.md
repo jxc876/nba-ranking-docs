@@ -101,16 +101,6 @@ Players with the same score share the same rank. They are displayed alphabetical
 
 Some accomplishments overlap by design. A DPOY winner will often also receive an All-Defensive selection, just as an MVP winner will often receive an All-NBA selection. The model treats these as separate accomplishments because they represent different honors, but the default weights should account for the overlap so that related achievements are not unintentionally overemphasized.
 
-##  Questions
-
-- What are good default weights for the different achievements?
-- How do we handle awards that did not exist in previous eras?
-- Do eligible player’s pre-1980 accomplishments count (ex: Kareem’s earlier awards)
-- How can values with different scales be normalized 
-- How do we keep the formulas fun without making it hard to understand them
-- How do we handle ongoing data ingestions, and how often?
-- How do we handle data corrections, are old rankings immutable?
-
 # Scenarios
 
 There are two main scenarios that users of the app can take.

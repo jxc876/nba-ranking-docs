@@ -2,7 +2,7 @@
 
 ## Data Model
 
-We can use a relation database — ex: Postgres
+Let's use a relation database — ex: Postgres
 
 - https://www.postgresql.org
 
@@ -141,7 +141,7 @@ The official NBA API available at `stats.nba.com`
 - https://www.nba.com/stats/player/203999/career — HTML page for Jokic
 - https://stats.nba.com/stats/playerawards?PlayerID=203999 — Call for Jokic, times out
 
-<img src="_img/nba-awards-screenshot.png" alt="nba-awards-screenshot" width="900">
+<img src="../_img/nba-awards-screenshot.png" alt="nba-awards-screenshot" width="900">
 
 `nba_api` — A Python client for accessing NBA.com
 
