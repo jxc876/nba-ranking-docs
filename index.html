@@ -38,6 +38,9 @@
                                 <a href="." class="nav-link active" aria-current="page">Home</a>
                             </li>
                             <li class="nav-item">
+                                <a href="Scope/" class="nav-link">Scope</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="Architecture/" class="nav-link">Architecture</a>
                             </li>
                             <li class="nav-item">
@@ -58,7 +61,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="Architecture/" class="nav-link">
+                                <a rel="next" href="Scope/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -103,18 +106,6 @@
             
             <li class="nav-item" data-bs-level="1"><a href="#scope" class="nav-link">Scope</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#player-pool" class="nav-link">Player Pool</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#accomplishments" class="nav-link">Accomplishments</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#ranking-model" class="nav-link">Ranking Model</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
             
@@ -190,46 +181,7 @@
 <li>The results are intended to be a fun conversation starter</li>
 </ul>
 <h1 id="scope">Scope</h1>
-<h2 id="player-pool">Player Pool</h2>
-<p>The app focuses on the modern NBA era, beginning with the 1979–80 season. </p>
-<p>This boundary roughly aligns with the introduction of the three-point line and the start of the Magic Johnson/Larry Bird era.</p>
-<p>This limits the scope of the app and makes getting the data easier</p>
-<p>It also avoids some of the issues of comparing different eras</p>
-<ul>
-<li>Ex: The NBA consisted of 8 teams from 1956 to 1961, 14 in 1969, etc</li>
-<li>https://en.wikipedia.org/wiki/Expansion_of_the_NBA</li>
-</ul>
-<h2 id="accomplishments">Accomplishments</h2>
-<p>The initial ranking formula uses the following countable accomplishments:</p>
-<ul>
-<li>NBA championship</li>
-<li>NBA Most Valuable Player (MVP)</li>
-<li>NBA Finals MVP</li>
-<li>NBA Defensive Player of the Year (DPOY)</li>
-<li>All-NBA First Team</li>
-<li>All-NBA Second Team</li>
-<li>All-NBA Third Team</li>
-<li>All-Defensive teams</li>
-<li>NBA Finals appearance</li>
-<li>NBA Rookie of the Year</li>
-</ul>
-<p>Later iterations might include the following:</p>
-<ul>
-<li>Career Totals (Points, Rebounds, Assists, etc)</li>
-<li>Career Averages (PPG, RPG, APG, etc)</li>
-<li>All-Star selections (maybe, but mostly popularity based)</li>
-<li>Statistical milestones, such as triple-doubles</li>
-<li>Leading the league (ex: Scoring titles)</li>
-</ul>
-<p>One reason for deferring averages is because they use different scales and require normalization to account for pace and era.</p>
-<h2 id="ranking-model">Ranking Model</h2>
-<p>Each accomplishment type has a (non-negative) numeric weight chosen by the ranking's creator. A player's score is the sum of their accomplishment counts multiplied by those weights.</p>
-<pre><code class="language-text">player score = Σ (accomplishment count × accomplishment weight)
-</code></pre>
-<p>For example, if an MVP is worth 10 points and a championship is worth 8 points, a player with two MVPs and three championships receives 44 points from those two categories.</p>
-<p>The UI should show both the total score and its breakdown so that viewers can understand the result. A weight of zero means an accomplishment does not affect that ranking.</p>
-<p>Players with the same score share the same rank. They are displayed alphabetically within the tie.</p>
-<p>Some accomplishments overlap by design. A DPOY winner will often also receive an All-Defensive selection, just as an MVP winner will often receive an All-NBA selection. The model treats these as separate accomplishments because they represent different honors, but the default weights should account for the overlap so that related achievements are not unintentionally overemphasized.</p>
+<p>See <a href="Scope/">Scope</a> for details on the scope of the project.</p>
 <h1 id="scenarios">Scenarios</h1>
 <p>There are two main scenarios that users of the app can take.</p>
 <h2 id="1-view-a-ranking">1. View a Ranking</h2>
@@ -319,5 +271,5 @@
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-09-27 01:19:53.928156+00:00
+Build Date UTC : 2026-09-27 01:22:15.834134+00:00
 -->

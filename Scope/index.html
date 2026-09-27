@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Appendix - NBA Ranking App</title>
+        <title>Scope - NBA Ranking App</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -38,7 +38,7 @@
                                 <a href=".." class="nav-link">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../Scope/" class="nav-link">Scope</a>
+                                <a href="./" class="nav-link active" aria-current="page">Scope</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../Architecture/" class="nav-link">Architecture</a>
@@ -50,18 +50,18 @@
                                 <a href="../Screens/" class="nav-link">Screens</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./" class="nav-link active" aria-current="page">Appendix</a>
+                                <a href="../Appendix/" class="nav-link">Appendix</a>
                             </li>
                         </ul>
 
                     <ul class="nav navbar-nav ms-md-auto">
                             <li class="nav-item">
-                                <a rel="prev" href="../Screens/" class="nav-link">
+                                <a rel="prev" href=".." class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="../Architecture/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -83,21 +83,17 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#appendix" class="nav-link">Appendix</a>
+            <li class="nav-item" data-bs-level="1"><a href="#scope" class="nav-link">Scope</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#routes" class="nav-link">Routes</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#domain-names" class="nav-link">Domain Names</a>
+            <li class="nav-item" data-bs-level="2"><a href="#player-pool" class="nav-link">Player Pool</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#open-questions" class="nav-link">Open Questions</a>
+            <li class="nav-item" data-bs-level="2"><a href="#accomplishments" class="nav-link">Accomplishments</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#docs" class="nav-link">Docs</a>
+            <li class="nav-item" data-bs-level="2"><a href="#ranking-model" class="nav-link">Ranking Model</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -108,52 +104,47 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="appendix">Appendix</h1>
-<h2 id="routes">Routes</h2>
-<p>Milestone 1</p>
+<h1 id="scope">Scope</h1>
+<h2 id="player-pool">Player Pool</h2>
+<p>The app focuses on the modern NBA era, beginning with the 1979–80 season.</p>
+<p>This boundary roughly aligns with the introduction of the three-point line and the start of the Magic Johnson/Larry Bird era.</p>
+<p>This limits the scope of the app and makes getting the data easier</p>
+<p>It also avoids some of the issues of comparing different eras</p>
 <ul>
-<li><code>/</code> — home page, shows static page</li>
-<li><code>/about</code> — information about the project</li>
+<li>Ex: The NBA consisted of 8 teams from 1956 to 1961, 14 in 1969, etc</li>
+<li>https://en.wikipedia.org/wiki/Expansion_of_the_NBA</li>
 </ul>
-<p>Milestone 3</p>
+<h2 id="accomplishments">Accomplishments</h2>
+<p>The initial ranking formula uses the following countable accomplishments:</p>
 <ul>
-<li><code>/rankings/&lt;uuid&gt;</code> — saved ranking, shareable URL</li>
+<li>NBA championship</li>
+<li>NBA Most Valuable Player (MVP)</li>
+<li>NBA Finals MVP</li>
+<li>NBA Defensive Player of the Year (DPOY)</li>
+<li>All-NBA First Team</li>
+<li>All-NBA Second Team</li>
+<li>All-NBA Third Team</li>
+<li>All-Defensive teams</li>
+<li>NBA Finals appearance</li>
+<li>NBA Rookie of the Year</li>
 </ul>
-<p>Future Ideas</p>
+<p>Later iterations might include the following:</p>
 <ul>
-<li><code>/players/&lt;slug&gt;</code> — possible future player profile</li>
+<li>Career Totals (Points, Rebounds, Assists, etc)</li>
+<li>Career Averages (PPG, RPG, APG, etc)</li>
+<li>All-Star selections (maybe, but mostly popularity based)</li>
+<li>Statistical milestones, such as triple-doubles</li>
+<li>Leading the league (ex: Scoring titles)</li>
 </ul>
-<h2 id="domain-names">Domain Names</h2>
-<p>Let's avoid using NBA in the name, some ideas:</p>
-<ul>
-<li><code>hoopsrank.com</code></li>
-<li><code>hooprankings.com</code></li>
-<li><code>ringstomvps.com</code></li>
-<li><code>hoopsformula.com</code></li>
-<li><code>hoopscore.com</code></li>
-<li><code>mygoatformula.com</code></li>
-<li><code>rankthegreats.com</code></li>
-<li><code>buildyourgoat.com</code></li>
-</ul>
-<h2 id="open-questions">Open Questions</h2>
-<ul>
-<li>What are good default weights for the different achievements?</li>
-<li>How do we handle awards that did not exist in previous eras?</li>
-<li>Do eligible player’s pre-1980 accomplishments count (ex: Kareem’s earlier awards)</li>
-<li>How can values with different scales be normalized</li>
-<li>How do we keep the formulas fun without making it hard to understand them</li>
-<li>How do we handle ongoing data ingestions, and how often?</li>
-<li>How do we handle data corrections, are old rankings immutable?</li>
-</ul>
-<h2 id="docs">Docs</h2>
-<p>How to Write an Effective Software Design Document</p>
-<ul>
-<li>https://refactoringenglish.com/excerpts/write-an-effective-design-doc</li>
-</ul>
-<p>The Basketball 100 (GOAT Points), John Hollinger</p>
-<ul>
-<li>https://www.nytimes.com/athletic/5940794/2024/11/26/the-basketball-100-goat-points-book-excerpt</li>
-</ul></div>
+<p>One reason for deferring averages is because they use different scales and require normalization to account for pace and era.</p>
+<h2 id="ranking-model">Ranking Model</h2>
+<p>Each accomplishment type has a (non-negative) numeric weight chosen by the ranking's creator. A player's score is the sum of their accomplishment counts multiplied by those weights.</p>
+<pre><code class="language-text">player score = Σ (accomplishment count × accomplishment weight)
+</code></pre>
+<p>For example, if an MVP is worth 10 points and a championship is worth 8 points, a player with two MVPs and three championships receives 44 points from those two categories.</p>
+<p>The UI should show both the total score and its breakdown so that viewers can understand the result. A weight of zero means an accomplishment does not affect that ranking.</p>
+<p>Players with the same score share the same rank. They are displayed alphabetically within the tie.</p>
+<p>Some accomplishments overlap by design. A DPOY winner will often also receive an All-Defensive selection, just as an MVP winner will often receive an All-NBA selection. The model treats these as separate accomplishments because they represent different honors, but the default weights should account for the overlap so that related achievements are not unintentionally overemphasized.</p></div>
             </div>
         </div>
 
