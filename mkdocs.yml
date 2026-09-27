@@ -6,6 +6,7 @@ site_dir: site
 # Does not prevent other Markdown files from being built.
 nav:
   - Home: README.md
+  - Scope: Scope.md
   - Architecture: Architecture.md
   - Milestones: Milestones.md
   - Screens: Screens.md
