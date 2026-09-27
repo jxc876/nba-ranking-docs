@@ -1,12 +1,14 @@
-# How to update docs
+# Docs
 
-Manually update the `README.md` file.
+How to update the docs and generate the site.
+
+First, update the Markdown files.
 
 Then run: 
 
 ```shell
-python -m venv venv
-source venv/bin/activate
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
