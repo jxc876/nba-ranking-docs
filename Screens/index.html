@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Docs - NBA Ranking App</title>
+        <title>Screens - NBA Ranking App</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -41,10 +41,10 @@
                                 <a href="../Architecture/" class="nav-link">Architecture</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./" class="nav-link active" aria-current="page">Docs</a>
+                                <a href="../Instructions/" class="nav-link">Docs</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../Screens/" class="nav-link">Screens</a>
+                                <a href="./" class="nav-link active" aria-current="page">Screens</a>
                             </li>
                         </ul>
 
@@ -55,12 +55,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../Architecture/" class="nav-link">
+                                <a rel="prev" href="../Instructions/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../Screens/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -82,8 +82,20 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#docs" class="nav-link">Docs</a>
+            <li class="nav-item" data-bs-level="1"><a href="#screens" class="nav-link">Screens</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#milestone-1-screens" class="nav-link">Milestone 1 Screens</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#milestone-2-screens" class="nav-link">Milestone 2 Screens</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#milestone-3-screens" class="nav-link">Milestone 3 Screens</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -91,20 +103,94 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="docs">Docs</h1>
-<p>How to update the docs and generate the site.</p>
-<p>First, update the Markdown files.</p>
-<p>Then run: </p>
-<pre><code class="language-shell">python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-</code></pre>
-<p>To preview locally:</p>
-<pre><code class="language-shell">mkdocs serve
-</code></pre>
-<p>To publish:</p>
-<pre><code class="language-shell">mkdocs gh-deploy
-</code></pre></div>
+<h1 id="screens">Screens</h1>
+<p>The main page contains:</p>
+<ul>
+<li>Navigation and a brief explanation of the ranking</li>
+<li>The scoring formula</li>
+<li>The ranked player list</li>
+<li>A selected player's score breakdown</li>
+<li>A footer with methodology and source links</li>
+</ul>
+<p>We likely need the following UI components</p>
+<ul>
+<li>Navigation</li>
+<li>Header</li>
+<li>ScoringFormula</li>
+<li>PlayerRankings</li>
+<li>PlayerCard</li>
+<li>Footer</li>
+</ul>
+<h2 id="milestone-1-screens">Milestone 1 Screens</h2>
+<p>Description</p>
+<ul>
+<li>The left side is the ranked player table</li>
+<li>Clicking a player row selects that player</li>
+<li>The selected row gets a highlight so it’s clear which player is active</li>
+<li>The right-hand panel updates to show that player's score breakdown</li>
+<li>"Show all 30 players" expands the table</li>
+<li>The navigation links just show static pages</li>
+<li>The formula cards are display-only for now</li>
+<li>The ranking itself is static, no filtering, sorting, or weight adjustment</li>
+<li>Default to the first row when the page loads</li>
+</ul>
+<p>Desktop</p>
+<p><img src="../_img/milestone-1-desktop.png" alt="milestone-1-desktop" width="600"></p>
+<p>Tablet</p>
+<p><img src="../_img/milestone-1-tablet.png" alt="milestone-1-tablet" width="400"></p>
+<p>Mobile</p>
+<p><img src="../_img/milestone-1-phone.png" alt="milestone-1-phone" width="300"></p>
+<h2 id="milestone-2-screens">Milestone 2 Screens</h2>
+<p>Description</p>
+<ul>
+<li>The user sees the current weights and then current ranking below</li>
+<li>Accomplishments have a minus + plus button and display the current value</li>
+<li>The user can Apply Weights after making edits</li>
+</ul>
+<p>Applying Weights</p>
+<ul>
+<li>Tap <code>+</code> / <code>-</code> to change the value</li>
+<li>Optionally support direct numeric input too, ex: <code>5</code></li>
+<li>Clicking "Apply Weights" recalculates scores &amp; re-sorts the ranking</li>
+<li>Update the selected player card to the first row after re-sorting</li>
+<li>When the weights are in pristine state, disable the Apply Weights button</li>
+<li>When the weights have been edited, enable the Apply Weights button</li>
+</ul>
+<p>Desktop</p>
+<ul>
+<li>On desktop/tablet, the user sees the current weights first</li>
+<li>Then rankings are displayed in a table below the weights</li>
+<li>The player detail view sits to the right of the table</li>
+</ul>
+<p><img src="../_img/milestone-2-desktop.png" alt="milestone-2-desktop" width="800"></p>
+<p>Tablet</p>
+<ul>
+<li>The player detail view stacks below the rankings</li>
+<li>When a player is tapped<ul>
+<li>Scroll smoothly to the detail card</li>
+<li>Or open the details as an expandable row/card directly underneath</li>
+<li>Otherwise the interaction might be hidden below the fold</li>
+<li>Preference for the expandable interaction</li>
+</ul>
+</li>
+</ul>
+<p><img src="../_img/milestone-2-tablet.png" alt="milestone-2-tablet" width="400"></p>
+<p>Mobile</p>
+<p><img src="../_img/milestone-2-phone.png" alt="milestone-2-phone" width="300"></p>
+<h2 id="milestone-3-screens">Milestone 3 Screens</h2>
+<p>Milestone 3 adds:</p>
+<ul>
+<li>A title and description</li>
+<li>save/share action</li>
+<li>stable ranking URL</li>
+<li>The ability to copy or fork</li>
+</ul>
+<p>Desktop</p>
+<p><img src="../_img/milestone-3-desktop.png" alt="milestone-3-desktop" width="800"></p>
+<p>Tablet</p>
+<p><img src="../_img/milestone-3-tablet.png" alt="milestone-3-tablet" width="500"></p>
+<p>Mobile</p>
+<p><img src="../_img/milestone-3-phone.png" alt="milestone-3-phone" width="300"></p></div>
             </div>
         </div>
 

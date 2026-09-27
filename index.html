@@ -38,7 +38,13 @@
                                 <a href="." class="nav-link active" aria-current="page">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a href="Instructions/" class="nav-link">How to update docs</a>
+                                <a href="Architecture/" class="nav-link">Architecture</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="Instructions/" class="nav-link">Docs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="Screens/" class="nav-link">Screens</a>
                             </li>
                         </ul>
 
@@ -54,7 +60,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="Instructions/" class="nav-link">
+                                <a rel="next" href="Architecture/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -133,34 +139,6 @@
             
             <li class="nav-item" data-bs-level="1"><a href="#architecture" class="nav-link">Architecture</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#data-model" class="nav-link">Data Model</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#tables" class="nav-link">Tables</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#sample-data" class="nav-link">Sample Data</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#data-ingestion" class="nav-link">Data Ingestion</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#nba-api" class="nav-link">NBA API</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#basketball-reference" class="nav-link">Basketball Reference</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#web-stack" class="nav-link">Web Stack</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
             
@@ -183,18 +161,6 @@
             
             <li class="nav-item" data-bs-level="1"><a href="#screens" class="nav-link">Screens</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#milestone-1-screens" class="nav-link">Milestone 1 Screens</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#milestone-2-screens" class="nav-link">Milestone 2 Screens</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#milestone-3-screens" class="nav-link">Milestone 3 Screens</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
             
@@ -326,301 +292,7 @@
 <li>Save the ranking and receive a shareable link</li>
 </ul>
 <h1 id="architecture">Architecture</h1>
-<h2 id="data-model">Data Model</h2>
-<p>We can use a relation database — ex: Postgres</p>
-<ul>
-<li>https://www.postgresql.org</li>
-</ul>
-<p>Players and accomplishment types should be modeled separately </p>
-<ul>
-<li>We should avoid using a column per achievement </li>
-<li>Adding a new accomplishment should not require a schema change</li>
-</ul>
-<pre><code>players
--------
-id
-name
-championships ❌
-mvps ❌
-finals_mvps ❌
-all_nba_first ❌
-...
-</code></pre>
-<h2 id="tables">Tables</h2>
-<p><code>players</code> — contains player information (id, name, etc)</p>
-<pre><code>players
--------
-id
-name
-external_id
-</code></pre>
-<p><code>accomplishment_types</code> — contains the different accomplishments (ex: MVP)</p>
-<pre><code>accomplishment_types
--------
-id 
-code
-name
-description
-</code></pre>
-<p><code>player_accomplishments</code> — is a joining table</p>
-<pre><code>player_accomplishments
--------
-id 
-player_id 
-accomplishment_type_id 
-season 
-team
-</code></pre>
-<p>A persisted ranking is conceptually a snapshot containing:</p>
-<ul>
-<li>The important part is that a shared ranking retains the formula and dataset version used</li>
-</ul>
-<pre><code>ranking
--------
-id
-title
-description
-weights
-dataset_version
-created_at
-</code></pre>
-<h2 id="sample-data">Sample Data</h2>
-<p>Initial accomplishment data:</p>
-<table>
-<thead>
-<tr>
-<th>Code</th>
-<th>Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>championship</code></td>
-<td>NBA Championship</td>
-</tr>
-<tr>
-<td><code>mvp</code></td>
-<td>Most Valuable Player</td>
-</tr>
-<tr>
-<td><code>finals_mvp</code></td>
-<td>Finals MVP</td>
-</tr>
-<tr>
-<td><code>dpoy</code></td>
-<td>Defensive Player of the Year</td>
-</tr>
-<tr>
-<td><code>all_nba_first</code></td>
-<td>All-NBA First Team</td>
-</tr>
-<tr>
-<td><code>all_nba_second</code></td>
-<td>All-NBA Second Team</td>
-</tr>
-<tr>
-<td><code>all_nba_third</code></td>
-<td>All-NBA Third Team</td>
-</tr>
-<tr>
-<td><code>all_defensive_first</code></td>
-<td>All-Defensive First Team</td>
-</tr>
-<tr>
-<td><code>all_defensive_second</code></td>
-<td>All-Defensive Second Team</td>
-</tr>
-<tr>
-<td><code>finals_appearance</code></td>
-<td>NBA Finals Appearance</td>
-</tr>
-<tr>
-<td><code>roy</code></td>
-<td>Rookie of the Year</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>Example for Jordan:</p>
-<table>
-<thead>
-<tr>
-<th>player_id</th>
-<th>accomplishment_type_id</th>
-<th>season</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>23</td>
-<td>2 (mvp)</td>
-<td>1991</td>
-</tr>
-<tr>
-<td>23</td>
-<td>1 (championship)</td>
-<td>1991</td>
-</tr>
-<tr>
-<td>23</td>
-<td>3 (finals_mvp)</td>
-<td>1991</td>
-</tr>
-<tr>
-<td>23</td>
-<td>2 (mvp)</td>
-<td>1992</td>
-</tr>
-</tbody>
-</table>
-<h2 id="data-ingestion">Data Ingestion</h2>
-<p>One of the biggest questions is where should we source our data from.</p>
-<p>There are few high quality sources, see notes below</p>
-<ul>
-<li>Basketball Reference &amp; NBA API (with several wrappers)</li>
-</ul>
-<p>We can query an external API in realtime, however a better option is to ingest the data</p>
-<ul>
-<li>The data rarely changes, we can store it in our own relational database (Postgres)</li>
-<li>We don't want to be rate limited </li>
-<li>Or break if the external API changes</li>
-</ul>
-<pre><code>Data Source -&gt; ingestion script -&gt; Database -&gt; API -&gt; UI
-</code></pre>
-<p>The ingestion process should:
-1. Fetch or parse records from the selected source
-2. Map external players and awards to canonical application records
-3. Validate duplicates, missing seasons, and unexpected values 
-4. Produce a versioned dataset that can be reviewed before publication
-5. Record source and import metadata so incorrect records can be traced and corrected</p>
-<p>Automated ingestion is useful, but a small curated dataset is acceptable for the first prototype. </p>
-<h2 id="nba-api">NBA API</h2>
-<p>The official NBA API available at <code>stats.nba.com</code></p>
-<ul>
-<li>The HTML pages seem to load fine, I get timeouts when using  <code>requests</code> or <code>fetch</code> </li>
-<li>It's possible NBA.com allows calls from their own frontend, but blocks others...</li>
-<li>https://www.nba.com/stats/players/traditional</li>
-<li>https://www.nba.com/stats/player/203999/career — HTML page for Jokic</li>
-<li>https://stats.nba.com/stats/playerawards?PlayerID=203999 — Call for Jokic, times out</li>
-</ul>
-<p><img src="_img/nba-awards-screenshot.png" alt="nba-awards-screenshot" width="900"></p>
-<p><code>nba_api</code> — A Python client for accessing NBA.com</p>
-<ul>
-<li>https://github.com/swar/nba_api</li>
-</ul>
-<p><code>nba-api</code> — A Python client for accessing NBA.com</p>
-<ul>
-<li>https://nba-apidocumentation.knowledgeowl.com</li>
-<li>https://nba-apidocumentation.knowledgeowl.com/help/playerawards</li>
-</ul>
-<h2 id="basketball-reference">Basketball Reference</h2>
-<p>The following URLs from Basketball Reference contain data that can be parsed if necessary.</p>
-<p>Some Basketball Reference awards pages combine NBA and ABA records. The app should ingest NBA records only; ABA accomplishments are outside the initial scope.</p>
-<p>(1) Championships (Count by Player)</p>
-<ul>
-<li>https://www.basketball-reference.com/leaders/most_championships.html</li>
-</ul>
-<p>(2) MVP Award (by year)</p>
-<ul>
-<li>https://www.basketball-reference.com/awards/mvp.html</li>
-</ul>
-<p>(3) Defensive Player (by year)</p>
-<ul>
-<li>https://www.basketball-reference.com/awards/dpoy.html</li>
-</ul>
-<p>(4) All-NBA selections by player (1st, 2nd, 3rd team)</p>
-<ul>
-<li>https://www.basketball-reference.com/awards/all_league_by_player.html</li>
-</ul>
-<p>(5) All-NBA selection by year</p>
-<ul>
-<li>https://www.basketball-reference.com/awards/all_league.html</li>
-</ul>
-<p>(6) Rookie of the Year, All Rookie Teams</p>
-<ul>
-<li>https://www.basketball-reference.com/awards/roy.html</li>
-<li>https://www.basketball-reference.com/awards/all_rookie.html</li>
-</ul>
-<p>(7) All-Defensive selections by player</p>
-<ul>
-<li>https://www.basketball-reference.com/awards/all_defense_by_player.html</li>
-</ul>
-<p>(8) All-Defensive teams by season</p>
-<ul>
-<li>https://www.basketball-reference.com/awards/all_defense.html</li>
-</ul>
-<p>Finals Appearances (By Team)</p>
-<ul>
-<li>https://www.basketball-reference.com/playoffs</li>
-<li>https://www.basketball-reference.com/playoffs/series.html</li>
-<li>https://www.basketball-reference.com/playoffs/2026-nba-finals-knicks-vs-spurs.html</li>
-<li>Note: Player final appearance might need to be derived</li>
-</ul>
-<p>Awards Index</p>
-<ul>
-<li>https://www.basketball-reference.com/awards</li>
-</ul>
-<p>NBA 75th Anniversary Team</p>
-<ul>
-<li>https://www.basketball-reference.com/awards/nba_75th_anniversary.html</li>
-</ul>
-<h2 id="web-stack">Web Stack</h2>
-<p><strong>Milestone 1</strong></p>
-<ul>
-<li>Can be a simple React application with no backend</li>
-<li>Data can come from a simple <code>.json</code> and be limited to ~30 players</li>
-<li>The objective is to validate if the default ranking is fun or has any glaring problems </li>
-</ul>
-<pre><code>nba-rankings/
-    src/ 
-        components/ 
-    data/ 
-        players.json 
-    lib/ 
-        scoring.ts 
-        App.tsx 
-    public/
-
-    package.json
-</code></pre>
-<p><strong>Milestone 2</strong></p>
-<ul>
-<li>We need to ingest external data into our own database</li>
-<li>The ingestion script can be a Node or Python script</li>
-<li>The web app can use React + Node + Postgres (Drizzle ORM)</li>
-<li>We can structure the project as a monorepo</li>
-</ul>
-<pre><code>nba-rankings/
-  apps/
-    web/       — React (Vite)
-    api/       — Express 
-  packages/
-    shared/   - shared TS types/schemas
-
-  ingestion/  — Node or Python
-    scripts/
-
-  package.json
-  pnpm-workspace.yaml
-</code></pre>
-<p>Images — Let's keep it simple and include images inside the web app</p>
-<ul>
-<li>We won't have enough images to need external storage (ex: S3 object storage)</li>
-<li>We can start with a generic image for all players, ex: <code>default-player.png</code></li>
-<li>Then add more images, ex: <code>LebronJames.png</code>, <code>NikolaJokic</code> </li>
-<li>Or we can name the images after IDs, ex: <code>203999.png</code></li>
-<li>ex: https://cdn.nba.com/headshots/nba/latest/1040x760/203999.png — Jokic</li>
-<li>In either case we should host them and not rely on external resources</li>
-</ul>
-<p>Deferred Decisions — we can decide this later</p>
-<ul>
-<li>Plain CSS vs Tailwind</li>
-<li>UI/UX System, ex: Material</li>
-<li>Component Library: Shadcn, Radix, etc</li>
-</ul>
+<p>See <a href="Architecture/">Architecture</a> for details on the data model and ingestion process.</p>
 <h1 id="project-milestones">Project Milestones</h1>
 <h2 id="milestone-1-fixed-ranking">Milestone 1) Fixed Ranking</h2>
 <p>Goal: Validate the presentation &amp; explainability of a weighted ranking</p>
@@ -669,93 +341,7 @@ created_at
 <li>Player images can be packaged and hosted with the web app. </li>
 </ul>
 <h1 id="screens">Screens</h1>
-<p>The core page contains:</p>
-<ul>
-<li>Navigation and a brief explanation of the ranking</li>
-<li>The scoring formula</li>
-<li>The ranked player list</li>
-<li>A selected player's score breakdown</li>
-<li>A footer with methodology and source links</li>
-</ul>
-<p>We likely need the following UI components</p>
-<ul>
-<li>Navigation</li>
-<li>Header</li>
-<li>ScoringFormula</li>
-<li>PlayerRankings</li>
-<li>PlayerCard</li>
-<li>Footer</li>
-</ul>
-<h2 id="milestone-1-screens">Milestone 1 Screens</h2>
-<p>Description </p>
-<ul>
-<li>The left side is the ranked player table</li>
-<li>Clicking a player row selects that player</li>
-<li>The selected row gets a highlight so it’s clear which player is active</li>
-<li>The right-hand panel updates to show that player's score breakdown</li>
-<li>"Show all 30 players" expands the table</li>
-<li>The navigation links just show static pages</li>
-<li>The formula cards are display-only for now</li>
-<li>The ranking itself is static, no filtering, sorting, or weight adjustment</li>
-<li>Default to the first row when the page loads</li>
-</ul>
-<p>Desktop</p>
-<p><img src="_img/milestone-1-desktop.png" alt="milestone-1-desktop" width="600"></p>
-<p>Tablet</p>
-<p><img src="_img/milestone-1-tablet.png" alt="milestone-1-tablet" width="400"></p>
-<p>Mobile</p>
-<p><img src="_img/milestone-1-phone.png" alt="milestone-1-phone" width="300"></p>
-<h2 id="milestone-2-screens">Milestone 2 Screens</h2>
-<p>Description</p>
-<ul>
-<li>The user sees the current weights and then current ranking below</li>
-<li>Accomplishments have a minus + plus button and display the current value</li>
-<li>The user can Apply Weights after making edits</li>
-</ul>
-<p>Applying Weights</p>
-<ul>
-<li>Tap <code>+</code> / <code>-</code> to change the value</li>
-<li>Optionally support direct numeric input too, ex: <code>5</code></li>
-<li>Clicking "Apply Weights" recalculates scores &amp; re-sorts the ranking</li>
-<li>Update the selected player card to the first row after re-sorting</li>
-<li>When the weights are in pristine state, disable the Apply Weights button</li>
-<li>When the weights have been edited, enable the Apply Weights button</li>
-</ul>
-<p>Desktop</p>
-<ul>
-<li>On desktop/tablet, the user sees the current weights first</li>
-<li>Then rankings are displayed in a table below the weights</li>
-<li>The player detail view sits to the right of the table</li>
-</ul>
-<p><img src="_img/milestone-2-desktop.png" alt="milestone-2-desktop" width="800"></p>
-<p>Tablet</p>
-<ul>
-<li>The player detail view stacks below the rankings</li>
-<li>When a player is tapped<ul>
-<li>Scroll smoothly to the detail card</li>
-<li>Or open the details as an expandable row/card directly underneath</li>
-<li>Otherwise the interaction might be hidden below the fold</li>
-<li>Preference for the expandable interaction</li>
-</ul>
-</li>
-</ul>
-<p><img src="_img/milestone-2-tablet.png" alt="milestone-2-tablet" width="400"></p>
-<p>Mobile</p>
-<p><img src="_img/milestone-2-phone.png" alt="milestone-2-phone" width="300"></p>
-<h2 id="milestone-3-screens">Milestone 3 Screens</h2>
-<p>Milestone 3 adds: </p>
-<ul>
-<li>A title and description</li>
-<li>save/share action</li>
-<li>stable ranking URL</li>
-<li>The ability to copy or fork</li>
-</ul>
-<p>Desktop</p>
-<p><img src="_img/milestone-3-desktop.png" alt="milestone-3-desktop" width="800"></p>
-<p>Tablet</p>
-<p><img src="_img/milestone-3-tablet.png" alt="milestone-3-tablet" width="500"></p>
-<p>Mobile</p>
-<p><img src="_img/milestone-3-phone.png" alt="milestone-3-phone" width="300"></p>
+<p>See <a href="Screens/">Screens</a> for UI / UX details.</p>
 <h1 id="appendix">Appendix</h1>
 <h2 id="routes">Routes</h2>
 <p>Milestone 1</p>
@@ -873,5 +459,5 @@ created_at
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-09-27 00:46:54.686093+00:00
+Build Date UTC : 2026-09-27 01:05:41.240271+00:00
 -->

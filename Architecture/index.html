@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Architecture - NBA Ranking App</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">NBA Ranking App</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Architecture</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../Instructions/" class="nav-link">Docs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../Screens/" class="nav-link">Screens</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../Instructions/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#architecture" class="nav-link">Architecture</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#data-model" class="nav-link">Data Model</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#tables" class="nav-link">Tables</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#sample-data" class="nav-link">Sample Data</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#data-ingestion" class="nav-link">Data Ingestion</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#nba-api" class="nav-link">NBA API</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#basketball-reference" class="nav-link">Basketball Reference</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#web-stack" class="nav-link">Web Stack</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="architecture">Architecture</h1>
+<h2 id="data-model">Data Model</h2>
+<p>We can use a relation database — ex: Postgres</p>
+<ul>
+<li>https://www.postgresql.org</li>
+</ul>
+<p>Players and accomplishment types should be modeled separately</p>
+<ul>
+<li>We should avoid using a column per achievement</li>
+<li>Adding a new accomplishment should not require a schema change</li>
+</ul>
+<pre><code>players
+-------
+id
+name
+championships ❌
+mvps ❌
+finals_mvps ❌
+all_nba_first ❌
+...
+</code></pre>
+<h2 id="tables">Tables</h2>
+<p><code>players</code> — contains player information (id, name, etc)</p>
+<pre><code>players
+-------
+id
+name
+external_id
+</code></pre>
+<p><code>accomplishment_types</code> — contains the different accomplishments (ex: MVP)</p>
+<pre><code>accomplishment_types
+-------
+id 
+code
+name
+description
+</code></pre>
+<p><code>player_accomplishments</code> — is a joining table</p>
+<pre><code>player_accomplishments
+-------
+id 
+player_id 
+accomplishment_type_id 
+season 
+team
+</code></pre>
+<p>A persisted ranking is conceptually a snapshot containing:</p>
+<ul>
+<li>The important part is that a shared ranking retains the formula and dataset version used</li>
+</ul>
+<pre><code>ranking
+-------
+id
+title
+description
+weights
+dataset_version
+created_at
+</code></pre>
+<h2 id="sample-data">Sample Data</h2>
+<p>Initial accomplishment data:</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>championship</code></td>
+<td>NBA Championship</td>
+</tr>
+<tr>
+<td><code>mvp</code></td>
+<td>Most Valuable Player</td>
+</tr>
+<tr>
+<td><code>finals_mvp</code></td>
+<td>Finals MVP</td>
+</tr>
+<tr>
+<td><code>dpoy</code></td>
+<td>Defensive Player of the Year</td>
+</tr>
+<tr>
+<td><code>all_nba_first</code></td>
+<td>All-NBA First Team</td>
+</tr>
+<tr>
+<td><code>all_nba_second</code></td>
+<td>All-NBA Second Team</td>
+</tr>
+<tr>
+<td><code>all_nba_third</code></td>
+<td>All-NBA Third Team</td>
+</tr>
+<tr>
+<td><code>all_defensive_first</code></td>
+<td>All-Defensive First Team</td>
+</tr>
+<tr>
+<td><code>all_defensive_second</code></td>
+<td>All-Defensive Second Team</td>
+</tr>
+<tr>
+<td><code>finals_appearance</code></td>
+<td>NBA Finals Appearance</td>
+</tr>
+<tr>
+<td><code>roy</code></td>
+<td>Rookie of the Year</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example for Jordan:</p>
+<table>
+<thead>
+<tr>
+<th>player_id</th>
+<th>accomplishment_type_id</th>
+<th>season</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>23</td>
+<td>2 (mvp)</td>
+<td>1991</td>
+</tr>
+<tr>
+<td>23</td>
+<td>1 (championship)</td>
+<td>1991</td>
+</tr>
+<tr>
+<td>23</td>
+<td>3 (finals_mvp)</td>
+<td>1991</td>
+</tr>
+<tr>
+<td>23</td>
+<td>2 (mvp)</td>
+<td>1992</td>
+</tr>
+</tbody>
+</table>
+<h2 id="data-ingestion">Data Ingestion</h2>
+<p>One of the biggest questions is where should we source our data from.</p>
+<p>There are few high quality sources, see notes below</p>
+<ul>
+<li>Basketball Reference &amp; NBA API (with several wrappers)</li>
+</ul>
+<p>We can query an external API in realtime, however a better option is to ingest the data</p>
+<ul>
+<li>The data rarely changes, we can store it in our own relational database (Postgres)</li>
+<li>We don't want to be rate limited</li>
+<li>Or break if the external API changes</li>
+</ul>
+<pre><code>Data Source -&gt; ingestion script -&gt; Database -&gt; API -&gt; UI
+</code></pre>
+<p>The ingestion process should:
+1. Fetch or parse records from the selected source
+2. Map external players and awards to canonical application records
+3. Validate duplicates, missing seasons, and unexpected values
+4. Produce a versioned dataset that can be reviewed before publication
+5. Record source and import metadata so incorrect records can be traced and corrected</p>
+<p>Automated ingestion is useful, but a small curated dataset is acceptable for the first prototype.</p>
+<h2 id="nba-api">NBA API</h2>
+<p>The official NBA API available at <code>stats.nba.com</code></p>
+<ul>
+<li>The HTML pages seem to load fine, I get timeouts when using  <code>requests</code> or <code>fetch</code></li>
+<li>It's possible NBA.com allows calls from their own frontend, but blocks others...</li>
+<li>https://www.nba.com/stats/players/traditional</li>
+<li>https://www.nba.com/stats/player/203999/career — HTML page for Jokic</li>
+<li>https://stats.nba.com/stats/playerawards?PlayerID=203999 — Call for Jokic, times out</li>
+</ul>
+<p><img src="_img/nba-awards-screenshot.png" alt="nba-awards-screenshot" width="900"></p>
+<p><code>nba_api</code> — A Python client for accessing NBA.com</p>
+<ul>
+<li>https://github.com/swar/nba_api</li>
+</ul>
+<p><code>nba-api</code> — A Python client for accessing NBA.com</p>
+<ul>
+<li>https://nba-apidocumentation.knowledgeowl.com</li>
+<li>https://nba-apidocumentation.knowledgeowl.com/help/playerawards</li>
+</ul>
+<h2 id="basketball-reference">Basketball Reference</h2>
+<p>The following URLs from Basketball Reference contain data that can be parsed if necessary.</p>
+<p>Some Basketball Reference awards pages combine NBA and ABA records. The app should ingest NBA records only; ABA accomplishments are outside the initial scope.</p>
+<p>(1) Championships (Count by Player)</p>
+<ul>
+<li>https://www.basketball-reference.com/leaders/most_championships.html</li>
+</ul>
+<p>(2) MVP Award (by year)</p>
+<ul>
+<li>https://www.basketball-reference.com/awards/mvp.html</li>
+</ul>
+<p>(3) Defensive Player (by year)</p>
+<ul>
+<li>https://www.basketball-reference.com/awards/dpoy.html</li>
+</ul>
+<p>(4) All-NBA selections by player (1st, 2nd, 3rd team)</p>
+<ul>
+<li>https://www.basketball-reference.com/awards/all_league_by_player.html</li>
+</ul>
+<p>(5) All-NBA selection by year</p>
+<ul>
+<li>https://www.basketball-reference.com/awards/all_league.html</li>
+</ul>
+<p>(6) Rookie of the Year, All Rookie Teams</p>
+<ul>
+<li>https://www.basketball-reference.com/awards/roy.html</li>
+<li>https://www.basketball-reference.com/awards/all_rookie.html</li>
+</ul>
+<p>(7) All-Defensive selections by player</p>
+<ul>
+<li>https://www.basketball-reference.com/awards/all_defense_by_player.html</li>
+</ul>
+<p>(8) All-Defensive teams by season</p>
+<ul>
+<li>https://www.basketball-reference.com/awards/all_defense.html</li>
+</ul>
+<p>Finals Appearances (By Team)</p>
+<ul>
+<li>https://www.basketball-reference.com/playoffs</li>
+<li>https://www.basketball-reference.com/playoffs/series.html</li>
+<li>https://www.basketball-reference.com/playoffs/2026-nba-finals-knicks-vs-spurs.html</li>
+<li>Note: Player final appearance might need to be derived</li>
+</ul>
+<p>Awards Index</p>
+<ul>
+<li>https://www.basketball-reference.com/awards</li>
+</ul>
+<p>NBA 75th Anniversary Team</p>
+<ul>
+<li>https://www.basketball-reference.com/awards/nba_75th_anniversary.html</li>
+</ul>
+<h2 id="web-stack">Web Stack</h2>
+<p><strong>Milestone 1</strong></p>
+<ul>
+<li>Can be a simple React application with no backend</li>
+<li>Data can come from a simple <code>.json</code> and be limited to ~30 players</li>
+<li>The objective is to validate if the default ranking is fun or has any glaring problems</li>
+</ul>
+<pre><code>nba-rankings/
+    src/ 
+        components/ 
+    data/ 
+        players.json 
+    lib/ 
+        scoring.ts 
+        App.tsx 
+    public/
+
+    package.json
+</code></pre>
+<p><strong>Milestone 2</strong></p>
+<ul>
+<li>We need to ingest external data into our own database</li>
+<li>The ingestion script can be a Node or Python script</li>
+<li>The web app can use React + Node + Postgres (Drizzle ORM)</li>
+<li>We can structure the project as a monorepo</li>
+</ul>
+<pre><code>nba-rankings/
+  apps/
+    web/       — React (Vite)
+    api/       — Express 
+  packages/
+    shared/   - shared TS types/schemas
+
+  ingestion/  — Node or Python
+    scripts/
+
+  package.json
+  pnpm-workspace.yaml
+</code></pre>
+<p>Images — Let's keep it simple and include images inside the web app</p>
+<ul>
+<li>We won't have enough images to need external storage (ex: S3 object storage)</li>
+<li>We can start with a generic image for all players, ex: <code>default-player.png</code></li>
+<li>Then add more images, ex: <code>LebronJames.png</code>, <code>NikolaJokic</code></li>
+<li>Or we can name the images after IDs, ex: <code>203999.png</code></li>
+<li>ex: https://cdn.nba.com/headshots/nba/latest/1040x760/203999.png — Jokic</li>
+<li>In either case we should host them and not rely on external resources</li>
+</ul>
+<p>Deferred Decisions — we can decide this later</p>
+<ul>
+<li>Plain CSS vs Tailwind</li>
+<li>UI/UX System, ex: Material</li>
+<li>Component Library: Shadcn, Radix, etc</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
