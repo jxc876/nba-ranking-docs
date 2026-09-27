@@ -88,10 +88,6 @@
             
             <li class="nav-item" data-bs-level="1"><a href="#architecture" class="nav-link">Architecture</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#data-model" class="nav-link">Data Model</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
             <li class="nav-item" data-bs-level="2"><a href="#tables" class="nav-link">Tables</a>
               <ul class="nav flex-column">
               </ul>
@@ -101,14 +97,6 @@
               </ul>
             </li>
             <li class="nav-item" data-bs-level="2"><a href="#data-ingestion" class="nav-link">Data Ingestion</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#nba-api" class="nav-link">NBA API</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#basketball-reference" class="nav-link">Basketball Reference</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -124,11 +112,53 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="architecture">Architecture</h1>
-<h2 id="data-model">Data Model</h2>
 <p>Let's use a relation database — ex: Postgres</p>
 <ul>
 <li>https://www.postgresql.org</li>
 </ul>
+<h2 id="tables">Tables</h2>
+<h3 id="player-table">Player Table</h3>
+<p><code>players</code> — contains player information (id, name, etc)</p>
+<pre><code>players
+-------
+id
+name
+external_id
+</code></pre>
+<h3 id="accomplishment-table">Accomplishment Table</h3>
+<p><code>accomplishment_types</code> — contains the different accomplishments (ex: MVP)</p>
+<pre><code>accomplishment_types
+-------
+id 
+code
+name
+description
+</code></pre>
+<h3 id="join-table">Join Table</h3>
+<p><code>player_accomplishments</code> — is a joining table, it joins players and accomplishments</p>
+<pre><code>player_accomplishments
+-------
+id 
+player_id 
+accomplishment_type_id 
+season 
+team
+</code></pre>
+<h3 id="ranking-table">Ranking Table</h3>
+<p>A persisted ranking is conceptually a snapshot containing:</p>
+<ul>
+<li>The important part is that a shared ranking retains the formula and dataset version used</li>
+</ul>
+<pre><code>ranking
+-------
+id
+title
+description
+weights
+dataset_version
+created_at
+</code></pre>
+<h3 id="avoid">Avoid</h3>
 <p>Players and accomplishment types should be modeled separately</p>
 <ul>
 <li>We should avoid using a column per achievement</li>
@@ -143,44 +173,6 @@ mvps ❌
 finals_mvps ❌
 all_nba_first ❌
 ...
-</code></pre>
-<h2 id="tables">Tables</h2>
-<p><code>players</code> — contains player information (id, name, etc)</p>
-<pre><code>players
--------
-id
-name
-external_id
-</code></pre>
-<p><code>accomplishment_types</code> — contains the different accomplishments (ex: MVP)</p>
-<pre><code>accomplishment_types
--------
-id 
-code
-name
-description
-</code></pre>
-<p><code>player_accomplishments</code> — is a joining table</p>
-<pre><code>player_accomplishments
--------
-id 
-player_id 
-accomplishment_type_id 
-season 
-team
-</code></pre>
-<p>A persisted ranking is conceptually a snapshot containing:</p>
-<ul>
-<li>The important part is that a shared ranking retains the formula and dataset version used</li>
-</ul>
-<pre><code>ranking
--------
-id
-title
-description
-weights
-dataset_version
-created_at
 </code></pre>
 <h2 id="sample-data">Sample Data</h2>
 <p>Initial accomplishment data:</p>
@@ -242,6 +234,7 @@ created_at
 </tr>
 </tbody>
 </table>
+<p>&nbsp;</p>
 <p>Example for Jordan:</p>
 <table>
 <thead>
@@ -274,6 +267,7 @@ created_at
 </tr>
 </tbody>
 </table>
+<p>&nbsp;</p>
 <h2 id="data-ingestion">Data Ingestion</h2>
 <p>One of the biggest questions is where should we source our data from.</p>
 <p>There are few high quality sources, see notes below</p>
@@ -295,7 +289,7 @@ created_at
 4. Produce a versioned dataset that can be reviewed before publication
 5. Record source and import metadata so incorrect records can be traced and corrected</p>
 <p>Automated ingestion is useful, but a small curated dataset is acceptable for the first prototype.</p>
-<h2 id="nba-api">NBA API</h2>
+<h3 id="nba-api">NBA API</h3>
 <p>The official NBA API available at <code>stats.nba.com</code></p>
 <ul>
 <li>The HTML pages seem to load fine, I get timeouts when using  <code>requests</code> or <code>fetch</code></li>
@@ -314,7 +308,7 @@ created_at
 <li>https://nba-apidocumentation.knowledgeowl.com</li>
 <li>https://nba-apidocumentation.knowledgeowl.com/help/playerawards</li>
 </ul>
-<h2 id="basketball-reference">Basketball Reference</h2>
+<h3 id="basketball-reference">Basketball Reference</h3>
 <p>The following URLs from Basketball Reference contain data that can be parsed if necessary.</p>
 <p>Some Basketball Reference awards pages combine NBA and ABA records. The app should ingest NBA records only; ABA accomplishments are outside the initial scope.</p>
 <p>(1) Championships (Count by Player)</p>
