@@ -34,14 +34,13 @@ This app makes the formula interactive. It helps a user answer:
 
 *Given the accomplishments that I value, how would NBA players rank?* 
 
-## Goals
+## Project Goals
 
-- A new user can understand the premise without additional explanation
-- A user can create a ranking that reflects their stated preferences
+- A new user can understand the basic premise of the app
+- A user can create a ranking that reflects their preferences
 - A viewer can explain why one player ranks above another
 - Two people using the same dataset and weights receive the same result
-- The initial scope is small enough to implement as a learning project
-- The results are intended to be a fun conversation starter
+- The initial scope is small enough to be a fun learning project
 
 ## Details
 
