@@ -8,9 +8,11 @@ nav:
   - Home: README.md
   - Scope: Scope.md
   - Architecture: Architecture.md
-  - Milestones: Milestones.md
+  - Milestone-1: Milestone-1.md
+  - Milestone-2: Milestone-2.md
+  - Milestone-3: Milestone-3.md
   - Screens: Screens.md
-  - Appendix: Appendix.md
+#  - Appendix: Appendix.md
 
 # Uncomment exclude_docs to build only the files listed above.
 # The first pattern excludes everything, and the ! patterns allow selected files.
