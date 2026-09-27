@@ -1,8 +1,10 @@
-## Milestone 3
+# Milestone 3
 
-## Goals
+**Milestone 3) Save & Share**
 
-Goal: Allow Saving & Sharing Ranking
+## Goal
+
+Allow Saving & Sharing Ranking
 
 - Store players, accomplishments, dataset versions, and saved rankings
 - Save configuration (weights, results) & metadata (title, description), immutable?

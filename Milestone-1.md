@@ -1,10 +1,10 @@
 # Milestone 1
 
-## Goals
-
 **Milestone 1) Fixed Ranking**
 
-Goal: Validate the presentation & explainability of a weighted ranking
+## Goal
+
+Validate the presentation & explainability of a weighted ranking
 
 - Use predetermined fixed weights
 - Use a curated dataset of  ~30 notable players

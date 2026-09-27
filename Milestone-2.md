@@ -1,8 +1,10 @@
 # Milestone 2
 
-## Goals
+**Milestone 2) Personal Formula**
 
-Goal: Validate the interaction of creating a personal formula.
+## Goal
+
+Validate the interaction of creating a personal formula.
 
 - Show the current weight for every supported accomplishment
 - Allow weights to be increased, decreased, or set to zero
