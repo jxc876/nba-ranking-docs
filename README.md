@@ -10,11 +10,9 @@ For code see: [nba-ranking-app](https://github.com/jxc876/nba-ranking-app/tree/m
 
 ## Objective
 
-Build a web application that lets basketball fans create, explore, and share rankings of the greatest modern-era NBA players.
+Let's build a web application that lets basketball fans create and share rankings of the greatest NBA players.
 
-Instead of presenting a single "correct" ranking, the user can decide how much each accomplishment matters. 
-
-The app then applies those weights consistently across eligible players.
+User can decide how much certain accomplishments matter and generate their own rankings. 
 
 <img src="_img/milestone-2-desktop.png" alt="milestone-2-desktop" width="800">
 
