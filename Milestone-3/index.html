@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Docs - NBA Ranking App</title>
+        <title>Milestone-3 - NBA Ranking App</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -50,7 +50,7 @@
                                 <a href="../Milestone-2/" class="nav-link">Milestone-2</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../Milestone-3/" class="nav-link">Milestone-3</a>
+                                <a href="./" class="nav-link active" aria-current="page">Milestone-3</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../Screens/" class="nav-link">Screens</a>
@@ -58,6 +58,16 @@
                         </ul>
 
                     <ul class="nav navbar-nav ms-md-auto">
+                            <li class="nav-item">
+                                <a rel="prev" href="../Milestone-2/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../Screens/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -76,7 +86,32 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#docs" class="nav-link">Docs</a>
+            <li class="nav-item" data-bs-level="2"><a href="#milestone-3" class="nav-link">Milestone 3</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#goals" class="nav-link">Goals</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#ux" class="nav-link">UX</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#desktop" class="nav-link">Desktop</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#tablet" class="nav-link">Tablet</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#mobile" class="nav-link">Mobile</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -85,20 +120,34 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="docs">Docs</h1>
-<p>How to update the docs and generate the site.</p>
-<p>First, update the Markdown files.</p>
-<p>Then run: </p>
-<pre><code class="language-shell">python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-</code></pre>
-<p>To preview locally:</p>
-<pre><code class="language-shell">mkdocs serve
-</code></pre>
-<p>To publish:</p>
-<pre><code class="language-shell">mkdocs gh-deploy
-</code></pre></div>
+<h2 id="milestone-3">Milestone 3</h2>
+<h2 id="goals">Goals</h2>
+<p>Goal: Allow Saving &amp; Sharing Ranking</p>
+<ul>
+<li>Store players, accomplishments, dataset versions, and saved rankings</li>
+<li>Save configuration (weights, results) &amp; metadata (title, description), immutable?</li>
+<li>View and share using URLs, ex: <code>site.com/ranking/&lt;UUID&gt;</code></li>
+<li>Ability to fork a shared URL</li>
+</ul>
+<p>Technical Notes</p>
+<ul>
+<li>Ingest and validate a broader modern-era dataset</li>
+<li>Player images can be packaged and hosted with the web app.</li>
+</ul>
+<h2 id="ux">UX</h2>
+<p>Key Interactions &amp; Features:</p>
+<ul>
+<li>A title and description</li>
+<li>Save/share action</li>
+<li>Stable ranking URL</li>
+<li>The ability to copy or fork</li>
+</ul>
+<h2 id="desktop">Desktop</h2>
+<p><img src="../_img/milestone-3-desktop.png" alt="milestone-3-desktop" width="800"></p>
+<h2 id="tablet">Tablet</h2>
+<p><img src="../_img/milestone-3-tablet.png" alt="milestone-3-tablet" width="500"></p>
+<h2 id="mobile">Mobile</h2>
+<p><img src="../_img/milestone-3-phone.png" alt="milestone-3-phone" width="300"></p></div>
             </div>
         </div>
 

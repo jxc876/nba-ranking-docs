@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Docs - NBA Ranking App</title>
+        <title>Milestone-2 - NBA Ranking App</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -47,7 +47,7 @@
                                 <a href="../Milestone-1/" class="nav-link">Milestone-1</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../Milestone-2/" class="nav-link">Milestone-2</a>
+                                <a href="./" class="nav-link active" aria-current="page">Milestone-2</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../Milestone-3/" class="nav-link">Milestone-3</a>
@@ -58,6 +58,16 @@
                         </ul>
 
                     <ul class="nav navbar-nav ms-md-auto">
+                            <li class="nav-item">
+                                <a rel="prev" href="../Milestone-1/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../Milestone-3/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -76,8 +86,28 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#docs" class="nav-link">Docs</a>
+            <li class="nav-item" data-bs-level="1"><a href="#milestone-2" class="nav-link">Milestone 2</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#goals" class="nav-link">Goals</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#ux" class="nav-link">UX</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#desktop" class="nav-link">Desktop</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#tablet" class="nav-link">Tablet</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#mobile" class="nav-link">Mobile</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -85,20 +115,58 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="docs">Docs</h1>
-<p>How to update the docs and generate the site.</p>
-<p>First, update the Markdown files.</p>
-<p>Then run: </p>
-<pre><code class="language-shell">python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-</code></pre>
-<p>To preview locally:</p>
-<pre><code class="language-shell">mkdocs serve
-</code></pre>
-<p>To publish:</p>
-<pre><code class="language-shell">mkdocs gh-deploy
-</code></pre></div>
+<h1 id="milestone-2">Milestone 2</h1>
+<h2 id="goals">Goals</h2>
+<p>Goal: Validate the interaction of creating a personal formula.</p>
+<ul>
+<li>Show the current weight for every supported accomplishment</li>
+<li>Allow weights to be increased, decreased, or set to zero</li>
+<li>Recalculate and reorder the ranking after changes are applied</li>
+<li>Keep the curated local dataset and client-only architecture</li>
+</ul>
+<p>Success</p>
+<ul>
+<li>A user can change the formula</li>
+<li>See a predictable change in the rankings</li>
+<li>Understand why the result changed</li>
+</ul>
+<h2 id="ux">UX</h2>
+<p>Key Interactions &amp; Features:</p>
+<ul>
+<li>The user sees the current weights and then current ranking below</li>
+<li>Accomplishments have a minus + plus button and display the current value</li>
+<li>The user can Apply Weights after making edits</li>
+</ul>
+<p>Applying Weights</p>
+<ul>
+<li>Tap <code>+</code> / <code>-</code> to change the value</li>
+<li>Optionally support direct numeric input too, ex: <code>5</code></li>
+<li>Clicking "Apply Weights" recalculates scores &amp; re-sorts the ranking</li>
+<li>Update the selected player card to the first row after re-sorting</li>
+<li>When the weights are in pristine state, disable the Apply Weights button</li>
+<li>When the weights have been edited, enable the Apply Weights button</li>
+</ul>
+<h2 id="desktop">Desktop</h2>
+<ul>
+<li>On desktop/tablet, the user sees the current weights first</li>
+<li>Then rankings are displayed in a table below the weights</li>
+<li>The player detail view sits to the right of the table</li>
+</ul>
+<p><img src="../_img/milestone-2-desktop.png" alt="milestone-2-desktop" width="800"></p>
+<h2 id="tablet">Tablet</h2>
+<ul>
+<li>The player detail view stacks below the rankings</li>
+<li>When a player is tapped<ul>
+<li>Scroll smoothly to the detail card</li>
+<li>Or open the details as an expandable row/card directly underneath</li>
+<li>Otherwise the interaction might be hidden below the fold</li>
+<li>Preference for the expandable interaction</li>
+</ul>
+</li>
+</ul>
+<p><img src="../_img/milestone-2-tablet.png" alt="milestone-2-tablet" width="400"></p>
+<h2 id="mobile">Mobile</h2>
+<p><img src="../_img/milestone-2-phone.png" alt="milestone-2-phone" width="300"></p></div>
             </div>
         </div>
 
